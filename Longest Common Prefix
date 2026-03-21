@@ -1,0 +1,23 @@
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        
+        # Step 1: Handle edge case (empty list)
+        if not strs:
+            return ""
+        
+        # Step 2: Assume first string as prefix
+        prefix = strs[0]
+        
+        # Step 3: Compare prefix with remaining strings
+        for word in strs[1:]:
+            
+            # Step 4: Reduce prefix until it matches the start of word
+            while word.find(prefix) != 0:
+                prefix = prefix[:-1]  # remove last character
+                
+                # If prefix becomes empty → no common prefix
+                if prefix == "":
+                    return ""
+        
+        # Step 5: Return final prefix
+        return prefix
